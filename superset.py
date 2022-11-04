@@ -16,34 +16,42 @@ FIRST_NAMER = os.getenv("FIRST_NAMER")
 LAST_NAME = os.getenv("LAST_NAME")
 
 
-def authenticate():
+def authenticate(
+    name=API_TOKEN,
+    secret=SECRET,
+):
     response = requests.post(
         URL_AUTH,
         headers={
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:8000"
+            "Access-Control-Allow-Origin": "http://localhost:8000",
         },
-
         data=json.dumps(
             {
-                "name": API_TOKEN,
-                "secret": SECRET,
+                "name": name,
+                "secret": secret,
             }
         ),
     )
     return response.json()["payload"]["access_token"]
 
 
-def get_guest_token_for_dashboard(dashboard_id, access_token):
+def get_guest_token_for_dashboard(
+    dashboard_id,
+    access_token,
+    username=USERNAME,
+    first_name=FIRST_NAMER,
+    last_name=LAST_NAME,
+):
     response = requests.post(
         URL_GUEST_TOKEN,
         data=json.dumps(
             {
                 "user": {
-                    "username": USERNAME,
-                    "first_name": FIRST_NAMER,
-                    "last_name": LAST_NAME,
+                    "username": username,
+                    "first_name": first_name,
+                    "last_name": last_name,
                 },
                 "resources": [
                     {

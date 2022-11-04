@@ -29,7 +29,7 @@ templates = Jinja2Templates(directory="templates")
 async def analytics_view(request: Request):
     access_token = superset.authenticate()
     guest_token = superset.get_guest_token_for_dashboard(
-        dashboard_id=os.getenv("DASHBOARD_ID"), access_token=access_token
+        dashboard_id=DASHBOARD_ID, access_token=access_token
     )
     return guest_token
 
@@ -40,7 +40,7 @@ async def dashboard(request: Request):
         "index.html",
         {
             "request": request,
-            "DASHBOARD_ID": os.getenv("DASHBOARD_ID"),
-            "SUPERSET_DOMAIN": os.getenv("SUPERSET_DOMAIN"),
+            "DASHBOARD_ID": DASHBOARD_ID,
+            "SUPERSET_DOMAIN": SUPERSET_DOMAIN,
         },
     )
