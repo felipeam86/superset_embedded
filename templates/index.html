@@ -24,7 +24,11 @@
           supersetDomain: "{{ SUPERSET_DOMAIN }}",
           mountPoint: document.getElementById("dashboard-container"), // any html element that can contain an iframe
           fetchGuestToken: () => fetchGuestTokenFromBackend(),
-          dashboardUiConfig: { hideTitle: true, hideChartControls: true}, // dashboard UI config: hideTitle, hideTab, hideChartControls (optional)
+          dashboardUiConfig: {
+            hideTitle: false,
+            hideChartControls: false,
+            hideTab: false
+        }, // dashboard UI config: hideTitle, hideTab, hideChartControls (optional)
         });
     </script>
 </body>
