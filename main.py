@@ -26,7 +26,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/guest-token")
-async def analytics_view(request: Request):
+async def guest_token(request: Request):
     access_token = superset.authenticate()
     guest_token = superset.get_guest_token_for_dashboard(
         dashboard_id=DASHBOARD_ID, access_token=access_token
