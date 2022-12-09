@@ -12,7 +12,7 @@ SECRET = os.getenv("SECRET")
 URL_AUTH = os.getenv("URL_AUTH")
 URL_GUEST_TOKEN = os.getenv("URL_GUEST_TOKEN")
 USERNAME = os.getenv("USERNAME")
-FIRST_NAMER = os.getenv("FIRST_NAMER")
+FIRST_NAME = os.getenv("FIRST_NAME")
 LAST_NAME = os.getenv("LAST_NAME")
 
 
@@ -41,7 +41,7 @@ def get_guest_token_for_dashboard(
     dashboard_id,
     access_token,
     username=USERNAME,
-    first_name=FIRST_NAMER,
+    first_name=FIRST_NAME,
     last_name=LAST_NAME,
 ):
     response = requests.post(
