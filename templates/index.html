@@ -25,9 +25,9 @@
           mountPoint: document.getElementById("dashboard-container"), // any html element that can contain an iframe
           fetchGuestToken: () => fetchGuestTokenFromBackend(),
           dashboardUiConfig: {
-            hideTitle: false,
-            hideChartControls: false,
-            hideTab: false
+            hideTitle: {{ hideTitle }},
+            hideChartControls: {{ hideChartControls }},
+            hideTab: {{ hideTab }}
         }, // dashboard UI config: hideTitle, hideTab, hideChartControls (optional)
         });
     </script>

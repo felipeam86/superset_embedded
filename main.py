@@ -35,12 +35,20 @@ async def guest_token(request: Request):
 
 
 @app.get("/", response_class=HTMLResponse)
-async def dashboard(request: Request):
+async def dashboard(
+    request: Request,
+    hideTitle: bool = False,
+    hideChartControls: bool = False,
+    hideTab: bool = False,
+):
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
             "DASHBOARD_ID": DASHBOARD_ID,
             "SUPERSET_DOMAIN": SUPERSET_DOMAIN,
+            "hideTitle": str(hideTitle).lower(),
+            "hideChartControls": str(hideChartControls).lower(),
+            "hideTab": str(hideTab).lower(),
         },
     )
